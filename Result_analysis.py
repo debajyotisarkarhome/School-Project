@@ -1,4 +1,12 @@
+'''
+Project by Debajyoti Sarkar,Arka Sarkar,Karan Kumar Shaw
+Class: XII 'A"
+'''
 
+
+########################################
+############## Imports #################
+########################################
 import openpyxl
 import tkinter as tk
 import sys
