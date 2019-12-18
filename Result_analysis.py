@@ -1,68 +1,47 @@
-'''
-Project by Debajyoti Sarkar,Arka Sarkar,Karan Kumar Shaw
-Class: XII 'A"
-'''
-
-
-########################################
-############## Imports #################
-########################################
 import openpyxl
+
 import tkinter as tk
-import sys
-master = tk.Tk()
-master.title('Result Analysis')
 
+import os
 
-tk.Label(master, 
+ra = tk.Tk()
+ra.title('Result Analysis')
+
+tk.Label(ra, 
          text="Address").grid(row=0)
-tk.Label(master, 
+         
+tk.Label(ra, 
          text="Number of students").grid(row=1)
-tk.Label(master, 
+         
+tk.Label(ra, 
          text="Name of output file").grid(row=2)
-e1 = tk.Entry(master,width=75)
-e2 = tk.Entry(master,width=75)
-e3=tk.Entry(master,width=75)
+  
+rd = os.path.dirname(os.path.realpath(__file__))
+e1 = tk.Entry(ra,width=75)
+
+e2 = tk.Entry(ra,width=75)
+
+e3=tk.Entry(ra,width=75)
 
 e1.grid(row=0, column=1)
+
 e2.grid(row=1, column=1)
+
 e3.grid(row=2,column=1)
-tk.Button(master, 
-          text='Get Results', 
-          command=master.quit).grid(row=3,column=1)
 
+tk.Button(ra, text='Get Results',command=ra.quit).grid(row=3,column=1)
 def close(): 
-    master.destroy()
-tk.Button(master, text = "Quit", command = close).grid(row=3,column=0)
-
-
-
+    ra.destroy()
+tk.Button(ra, text = "Quit", command = close).grid(row=3,column=0)
 tk.mainloop()
-
-
-s=e1.get()
+s=rd+'\\Resources'+'\\'+e1.get()
 n=int(e2.get())
 name=e3.get()
-
-
-
-
-
-
 file=openpyxl.load_workbook(s)
 sheet=file.active
-
-
-
-
-
 ############################################################
 ######################  English ############################
 ############################################################
-
-
-
-
 engv=[]
 for i in range (1,n+1):
     x='eng'+str(i)
@@ -78,10 +57,7 @@ for j in range (9,109):
     ab1='AC'+str(j)
     z=sheet[ab1].value
     engm.append(z)
-
 english=dict(zip(engv,engm))
-print(englishsec)
-print(english)
 engseca=[]
 engsecb=[]
 aea=0
@@ -106,25 +82,11 @@ for i2 in range(0,n):
     if u=='absent':
         u=0
     engm1.append(u)
-
-print(engseca)
-print(engsecb)
-print(aea)
-print(aeb)
-
 taea=len(engseca)-aea
 taeb=len(engsecb)-aeb
-
-
-
-
-
 ############################################################
 ######################  Hindi ##############################
 ############################################################
-
-
-
 hndv=[]
 for i3 in range (1,n+1):
     xy='hnd'+str(i3)
@@ -134,22 +96,12 @@ for i4 in range (117,217):
     ab='C'+str(i4)
     zx=sheet[ab].value
     hndsec.append(zx)
-
 hindisec=dict(zip(hndv,hndsec))
-
-
-
 hndm=[]
 for j2 in range (117,217):
     z1=sheet['AC'+str(j2)].value
     hndm.append(z1)
-
-
 hindi=dict(zip(hndv,hndm))
-print(hindisec)
-print(hindi)
-
-
 hndseca=[]
 hndsecb=[]
 aha=0
@@ -174,51 +126,26 @@ for i2 in range(0,n):
     if u=='absent':
         u=0
     hndm1.append(u)
-
-
-print(hndseca)
-print(hndsecb)
-print(aha)
-print(ahb)
-
 taha=len(hndseca)-aha
 tahb=len(hndsecb)-ahb
-
-
 ############################################################
 ######################  Sanskrit ############################
 ############################################################
-
-
-
-
-
-
 sktv=[]
 for i in range (1,n+1):
     x='skt'+str(i)
     sktv.append(x)
-
 sktsec=[]
 for j in range (225,325):
     z=sheet['C'+str(j)].value
     sktsec.append(z)
-
-
 sanskritsec=dict(zip(sktv,sktsec))
-
 sktm=[]
 for j in range (225,325):
     ab='AC'+str(j)
     z=sheet[ab].value
     sktm.append(z)
-
 sanskrit=dict(zip(sktv,sktm))
-
-print(sanskrit)
-print(sanskritsec)
-
-
 sktseca=[]
 sktsecb=[]
 asa=0
@@ -237,55 +164,29 @@ for j in range(1,n+1):
             y=o
             asb+=1
         sktsecb.append(y)
-
-
 sktm1=[]
 for i2 in range(0,n):
     u=sktm[i2]
     if u=='absent':
         u=0
     sktm1.append(u)
-
-
-
-
-
-print(sktseca)
-print(sktsecb)
-print(asa)
-print(asb)
-
 tasa=len(sktseca)-asa
 tasb=len(sktsecb)-asb
-
-
 #maths
-
-
-
 mthv=[]
 for i in range (1,n+1):
     x='mth'+str(i)
     mthv.append(x)
-
 mthsec=[]
 for j in range (333,433):
     z=sheet['C'+str(j)].value
     mthsec.append(z)
-
-
 mathsec=dict(zip(mthv,mthsec))
-
-
 mthm=[]
 for j in range (333,433):
     z=sheet['AC'+str(j)].value
     mthm.append(z)
-
 math=dict(zip(mthv,mthm))
-print(math)
-print(mathsec)
-
 mthseca=[]
 mthsecb=[]
 ama=0
@@ -304,55 +205,31 @@ for j in range(1,n+1):
             y=o
             amb+=1
         mthsecb.append(y)
-
-
 mthm1=[]
 for i2 in range(0,n):
     u=mthm[i2]
     if u=='absent':
         u=0
     mthm1.append(u)
-
-
-print(mthseca)
-print(mthsecb)
-print(ama)
-print(amb)
-
-
 tama=len(mthseca)-ama
 tamb=len(mthsecb)-amb
-
-
-
-
 ############################################################
 ######################  Science ############################
 ############################################################
-
-
-
 sciv=[]
 for i in range (1,n+1):
     x='sci'+str(i)
     sciv.append(x)
-
 scisec=[]
 for j in range (441,541):
     z=sheet['C'+str(j)].value
     scisec.append(z)
 sciencesec=dict(zip(sciv,scisec))
-
 scim=[]
 for j in range (441,541):
     z=sheet['AC'+str(j)].value
     scim.append(z)
-
 science=dict(zip(sciv,scim))
-print(science)
-print(sciencesec)
-
-
 sciseca=[]
 scisecb=[]
 asca=0
@@ -371,57 +248,31 @@ for j in range (1,n+1):
             y=0
             ascb+=1
         scisecb.append(y)
-
 scim1=[]
 for i2 in range(0,n):
     u=scim[i2]
     if u=='absent':
         u=0
     scim1.append(u)
-
-
-
-
-
-
-print(sciseca)
-print(scisecb)
-print(asca)
-print(ascb)
-
 tasca=len(sciseca)-asca
 tascb=len(scisecb)-ascb
-
-
 ############################################################
 ################### Social science #########################
 ############################################################
-
-
-
 ssciv=[]
 for i in range (1,n+1):
     x='ssci'+str(i)
     ssciv.append(x)
-
 sscisec=[]
 for j in range (549,649):
     z=sheet['C'+str(j)].value
     sscisec.append(z)
-
-
 social_sciencesec=dict(zip(ssciv,sscisec))
-
 sscim=[]
 for j in range (549,649):
     z=sheet['AC'+str(j)].value
     sscim.append(z)
 social_science=dict(zip(ssciv,sscim))
-print(social_science)
-print(social_sciencesec)
-
-
-
 ssciseca=[]
 sscisecb=[]
 assa=0
@@ -440,39 +291,19 @@ for j in range (1,n+1):
             y=0
             assb+=1
         sscisecb.append(y)
-
-
-
 sscim1=[]
 for i2 in range(0,n):
     u=sscim[i2]
     if u=='absent':
         u=0
     sscim1.append(u)
-
-
-
-print(ssciseca)
-print(sscisecb)
-print(assa)
-print(assb)
-
-
-
 tassa=len(ssciseca)-assa
 tassb=len(sscisecb)-assb
-
 '''CALCULATION'''
-
 ##########################################################
 ############### calculation for 1st section ##############
 ##########################################################
-
-
 #English
-
-
-
 eaaa=0
 eba=0
 eca=0
@@ -490,14 +321,7 @@ for d in range(0,len(engseca)):
         eba+=1
     elif i>=90:
         eaaa+=1
-print(eaaa,eba,eca,eda,eea)
-
-
-
-
 #Hindi
-
-
 haaa=0
 hba=0
 hca=0
@@ -515,11 +339,7 @@ for d in range(0,len(hndseca)):
         hba+=1
     elif i>=90:
         haaa+=1
-print(haaa,hba,hca,hda,hea)
-
-
 #Sanskrit
-
 saaa=0
 sba=0
 sca=0
@@ -537,14 +357,7 @@ for d in range(0,len(sktseca)):
         sba+=1
     elif i>=90:
         saaa+=1
-print(saaa,sba,sca,sda,sea)
-
-
-
 #Math
-
-
-
 maaa=0
 mba=0
 mca=0
@@ -562,13 +375,7 @@ for d in range(0,len(mthseca)):
         mba+=1
     elif i>=90:
         maaa+=1
-print(maaa,mba,mca,mda,mea)
-
-
-
-
 #Science
-
 sciaaa=0
 sciba=0
 scica=0
@@ -586,13 +393,7 @@ for d in range(0,len(sciseca)):
         sciba+=1
     elif i>=90:
         sciaaa+=1
-print(sciaaa,sciba,scica,scida,sciea)
-
-
-
-
 #Social Science
-
 ssciaaa=0
 ssciba=0
 sscica=0
@@ -610,73 +411,30 @@ for d in range(0,len(ssciseca)):
         ssciba+=1
     elif i>=90:
         ssciaaa+=1
-print(ssciaaa,ssciba,sscica,sscida,ssciea)
-
-
-
-
 ##################################################################################################
 ######## overall  pass percentage age for indivisual subjects for 1st section ####################
 ##################################################################################################
-
-
 tqea=(eaaa+eba+eca+eda)
-
-
 tqha=(haaa+hba+hca+hda)
-
-
 tqsa=(saaa+sba+sca+sda)
-
-
 tqma=(maaa+mba+mca+mda)
-
-
 tqsca=(sciaaa+sciba+scica+scida)
-
-
 tqssca=(ssciaaa+ssciba+sscica+sscida)
-
-
-
-
 pea=int((tqea/taea)*100)
-
 pha=int((tqha/taha)*100)
-
 psa=int((tqsa/tasa)*100)
-
 pma=int((tqma/tama)*100)
-
 psca=int((tqsca/tasca)*100)
-
 pssca=int((tqssca/tassa)*100)
-
-print(tqea,tqha,tqsa,tqma,tqsca,tqssca)
-print(pea,pha,psa,pma,psca,pssca)
-
-
-
 #################################################################
 ############# Overall result fopr 1st section ###################
 #################################################################
-
-
 import numpy as np
-
 oa1=np.add(engseca[0:n],hndseca[0:n])
 oa2=np.add(oa1,sktseca[0:n])
 oa3=np.add(oa2,sciseca[0:n])
 oa4=np.add(oa3,ssciseca[0:n])
 oa5=np.add(oa4,mthseca[0:n])
-
-print(oa5)
-
-
-
-
-
-
 aaa=0
 ba=0
 ca=0
@@ -695,29 +453,15 @@ for i in range(0,len(oa5)):
         ba+=1
     elif x>=90:
         aaa+=1
-
-print(aaa,ba,ca,da,ea)
-
-
 tea=len(engseca)
 taa=taea
 tqa=aaa+ba+ca+da
 tfa=ea
 opa=(tqa/taa)*100
-
-
-
-
-
 ##################################################################
 ################ calculation for 2nd section #####################
 ##################################################################
-
-
 #English
-
-
-
 eaab=0
 ebb=0
 ecb=0
@@ -735,14 +479,7 @@ for d in range(0,len(engsecb)):
         ebb+=1
     elif i>=90:
         eaab+=1
-print(eaab,ebb,ecb,edb,eeb)
-
-
-
-
 #Hindi
-
-
 haab=0
 hbb=0
 hcb=0
@@ -760,11 +497,7 @@ for d in range(0,len(hndsecb)):
         hbb+=1
     elif i>=90:
         haab+=1
-print(haab,hbb,hcb,hdb,heb)
-
-
 #Sanskrit
-
 saab=0
 sbb=0
 scb=0
@@ -782,14 +515,7 @@ for d in range(0,len(sktsecb)):
         sbb+=1
     elif i>=90:
         saab+=1
-print(saab,sbb,scb,sdb,seb)
-
-
-
 #Math
-
-
-
 maab=0
 mbb=0
 mcb=0
@@ -807,13 +533,7 @@ for d in range(0,len(mthsecb)):
         mbb+=1
     elif i>=90:
         maab+=1
-print(maab,mbb,mcb,mdb,meb)
-
-
-
-
 #Science
-
 sciaab=0
 scibb=0
 scicb=0
@@ -831,13 +551,7 @@ for d in range(0,len(scisecb)):
         scibb+=1
     elif i>=90:
         sciaab+=1
-print(sciaab,scibb,scicb,scidb,scieb)
-
-
-
-
 #Social Science
-
 ssciaab=0
 sscibb=0
 sscicb=0
@@ -855,74 +569,30 @@ for d in range(0,len(sscisecb)):
         sscibb+=1
     elif i>=90:
         ssciaab+=1
-print(ssciaab,sscibb,sscicb,sscidb,sscieb)
-
-
-
-
-
 ########################################################################################################
 ############### Overall  pass  percentage for indivisual subjects for 2nd section ######################
 ########################################################################################################
-
-
 tqeb=(eaab+ebb+ecb+edb)
-
-
 tqhb=(haab+hbb+hcb+hdb)
-
-
 tqsb=(saab+sbb+scb+sdb)
-
-
 tqmb=(maab+mbb+mcb+mdb)
-
-
 tqscb=(sciaab+scibb+scicb+scidb)
-
-
 tqsscb=(ssciaab+sscibb+sscicb+sscidb)
-
-
-
-
 peb=int((tqeb/taeb)*100)
-
 phb=int((tqhb/tahb)*100)
-
 psb=int((tqsb/tasb)*100)
-
 pmb=int((tqmb/tamb)*100)
-
 pscb=int((tqscb/tascb)*100)
-
 psscb=int((tqsscb/tassb)*100)
-
-print(tqeb,tqhb,tqsb,tqmb,tqscb,tqsscb)
-
-
-print(peb,phb,psb,pmb,pscb,psscb)
-
-
 #####################################################################
 ################ overall result for 2nd section #####################
 #####################################################################
-
 import numpy as np
-
 ob1=np.add(engsecb[0:n],hndsecb[0:n])
 ob2=np.add(ob1,sktsecb[0:n])
 ob3=np.add(ob2,scisecb[0:n])
 ob4=np.add(ob3,sscisecb[0:n])
 ob5=np.add(ob4,mthsecb[0:n])
-
-print(ob5)
-
-
-
-
-
-
 aab=0
 bb=0
 cb=0
@@ -941,59 +611,30 @@ for i in range(0,len(ob5)):
         bb+=1
     elif x>=90:
         aab+=1
-
-print(aab,bb,cb,db,eb)
-
 teb=len(engsecb)
 tab=taeb
 tqb=aab+bb+cb+db
 tfb=eb
 opb=(tqb/tab)*100
-
-
-
-
-
-
 #################################################################
 ################## for overall class analysis ###################
 #################################################################
-
-
-
 #English
-
 oae=taea+taeb
-
-
 #Hindi
-
 oah=taha+tahb
-
 #Sankrit
-
 oas=tasa+tasb
-
 #Math
-
 oam=tama+tamb
-
 #Science
-
 oasc=tasca+tascb
-
 #Social science
-
 oass=tassa+tassb
-
 ############################################################
 ##################### calculation ##########################
 ############################################################
-
-
-
 #English
-
 eaa=0
 eb=0
 ec=0
@@ -1011,12 +652,7 @@ for d in range(0,n):
         eb+=1
     elif i>=90:
         eaa+=1
-print(eaa,eb,ec,ed,ee)
-
-
 #Hindi
-
-
 haa=0
 hb=0
 hc=0
@@ -1034,11 +670,7 @@ for d in range(0,n):
         hb+=1
     elif i>=90:
         haa+=1
-print(haa,hb,hc,hd,he)
-
 #Sanskrit
-
-
 saa=0
 sb=0
 sc=0
@@ -1056,13 +688,7 @@ for d in range(0,n):
         sb+=1
     elif i>=90:
         saa+=1
-print(saa,sb,sc,sd,se)
-
-
-
 #Math
-
-
 maa=0
 mb=0
 mc=0
@@ -1080,13 +706,7 @@ for d in range(0,n):
         mb+=1
     elif i>=90:
         maa+=1
-print(maa,mb,mc,md,me)
-
-
-
 #Science
-
-
 sciaa=0
 scib=0
 scic=0
@@ -1104,11 +724,7 @@ for d in range(0,n):
         scib+=1
     elif i>=90:
         sciaa+=1
-print(sciaa,scib,scic,scid,scie)
-
 #Social Science
-
-
 ssciaa=0
 sscib=0
 sscic=0
@@ -1126,24 +742,15 @@ for d in range(0,n):
         sscib+=1
     elif i>=90:
         ssciaa+=1
-print(ssciaa,sscib,sscic,sscid,sscie)
-
 ######################################################################
 ################ overall result for class ############################
 ######################################################################
-
 import numpy as np
-
 o1=np.add(engm1[0:n],hndm1[0:n])
 o2=np.add(o1,sktm[0:n])
 o3=np.add(o2,scim[0:n])
 o4=np.add(o3,sscim[0:n])
 o5=np.add(o4,mthm[0:n])
-
-print(o5)
-
-
-
 aa=0
 b=0
 c=0
@@ -1162,69 +769,31 @@ for i in range(0,len(o5)):
         b+=1
     elif x>=90:
         aa+=1
-
-print(aa,b,c,d,e)
-
-
-
 #############################################################################
 ############# Overall  pass  %age for indivisual subjects ###################
 #############################################################################
-
-
-
-
 tqe=(eaa+eb+ec+ed)
-
-
 tqh=(haa+hb+hc+hd)
-
-
 tqs=(saa+sb+sc+sd)
-
-
 tqm=(maa+mb+mc+md)
-
-
 tqsc=(sciaa+scib+scic+scid)
-
-
 tqssc=(ssciaa+sscib+sscic+sscid)
-
-
 pe=int((tqe/oae)*100)
-
 ph=int((tqh/oah)*100)
-
 ps=int((tqs/oas)*100)
-
 pm=int((tqm/oam)*100)
-
 psc=int((tqsc/oasc)*100)
-
 pssc=int((tqssc/oass)*100)
-
-print(tqe,tqh,tqs,tqm,tqsc,tqssc)
-print(pe,ph,ps,pm,psc,pssc)
-
-
-
 te=len(engm[0:n])
 ta=oae
 tq=aa+b+c+d
 tf=e
 op=(tq/ta)*100
-
-
 ################################################################
 ################### P.I CALCULATIONS ###########################
 ################################################################
-
 #1st Section
-
 #English
-
-
 n1ea=0
 n2ea=0
 n3ea=0
@@ -1248,13 +817,8 @@ for d in range(0,len(engseca)):
         n2ea+=1
     if i>=90.1:
         n1ea+=1
-
 piea=((n1ea*7+n2ea*6+n3ea*5+n4ea*4+n5ea*3+n6ea*2+n7ea*1)*100)/(taea*7)
-
 #Hindi
-
-
-
 n1ha=0
 n2ha=0
 n3ha=0
@@ -1279,11 +843,7 @@ for d in range(0,len(hndseca)):
     if i>=90.1:
         n1ha+=1
 piha=((n1ha*7+n2ha*6+n3ha*5+n4ha*4+n5ha*3+n6ha*2+n7ha*1)*100)/(taha*7)
-
 #Sanskrit
-
-
-
 n1sa=0
 n2sa=0
 n3sa=0
@@ -1307,13 +867,8 @@ for d in range(0,len(sktseca)):
         n2sa+=1
     if i>=90.1:
         n1sa+=1
-
 pisa=((n1sa*7+n2sa*6+n3sa*5+n4sa*4+n5sa*3+n6sa*2+n7sa*1)*100)/(tasa*7)
-
-
 #maths
-
-
 n1ma=0
 n2ma=0
 n3ma=0
@@ -1323,7 +878,6 @@ n6ma=0
 n7ma=0
 for d in range(0,len(mthseca)):
     i=mthseca[d]
-
     if i>=33 and i<=40:
         n7ma+=1
     if i>=40.1 and i<=50:
@@ -1338,14 +892,8 @@ for d in range(0,len(mthseca)):
         n2ma+=1
     if i>=90.1:
         n1ma+=1
-
-
 pima=((n1ma*7+n2ma*6+n3ma*5+n4ma*4+n5ma*3+n6ma*2+n7ma*1)*100)/(tama*7)
-
 #science
-
-
-
 n1sca=0
 n2sca=0
 n3sca=0
@@ -1355,7 +903,6 @@ n6sca=0
 n7sca=0
 for d in range(0,len(sciseca)):
     i=sciseca[d]
-
     if i>=33 and i<=40:
         n7sca+=1
     if i>=40.1 and i<=50:
@@ -1370,17 +917,8 @@ for d in range(0,len(sciseca)):
         n2sca+=1
     if i>=90.1:
         n1sca+=1
-
 pisca=((n1sca*7+n2sca*6+n3sca*5+n4sca*4+n5sca*3+n6sca*2+n7sca*1)*100)/(tasca*7)
-
-
 #Social science
-
-
-
-
-
-
 n1ssca=0
 n2ssca=0
 n3ssca=0
@@ -1390,7 +928,6 @@ n6ssca=0
 n7ssca=0
 for d in range(0,len(ssciseca)):
     i=ssciseca[d]
-
     if i>=33 and i<=40:
         n7ssca+=1
     if i>=40.1 and i<=50:
@@ -1405,21 +942,10 @@ for d in range(0,len(ssciseca)):
         n2ssca+=1
     if i>=90.1:
         n1ssca+=1
-
 pissca=((n1ssca*7+n2ssca*6+n3ssca*5+n4ssca*4+n5ssca*3+n6ssca*2+n7ssca*1)*100)/(tassa*7)
-
-
-
 piseca=(piea+piha+pima+pisa+pisca+pissca)/6
-
-
-
 #2nd section
-
-
 #English
-
-
 n1eb=0
 n2eb=0
 n3eb=0
@@ -1443,11 +969,8 @@ for d in range(0,len(engsecb)):
         n2eb+=1
     if i>=90.1:
         n1eb+=1
-
 pieb=((n1eb*7+n2eb*6+n3eb*5+n4eb*4+n5eb*3+n6eb*2+n7eb*1)*100)/(taeb*7)
-
 #Hindi
-
 n1hb=0
 n2hb=0
 n3hb=0
@@ -1471,11 +994,8 @@ for d in range(0,len(hndsecb)):
         n2hb+=1
     if i>=90.1:
         n1hb+=1
-
 pihb=((n1hb*7+n2hb*6+n3hb*5+n4hb*4+n5hb*3+n6hb*2+n7hb*1)*100)/(tahb*7)
-
 #Sanskrit
-
 n1sb=0
 n2sb=0
 n3sb=0
@@ -1499,11 +1019,8 @@ for d in range(0,len(sktsecb)):
         n2sb+=1
     if i>=90.1:
         n1sb+=1
-
 pisb=((n1sb*7+n2sb*6+n3sb*5+n4sb*4+n5sb*3+n6sb*2+n7sb*1)*100)/(tasb*7)
-
 #Math
-
 n1mb=0
 n2mb=0
 n3mb=0
@@ -1527,11 +1044,8 @@ for d in range(0,len(mthsecb)):
         n2mb+=1
     if i>=90.1:
         n1mb+=1
-
 pimb=((n1mb*7+n2mb*6+n3mb*5+n4mb*4+n5mb*3+n6mb*2+n7mb*1)*100)/(tamb*7)
-
 #Science
-
 n1scb=0
 n2scb=0
 n3scb=0
@@ -1555,11 +1069,8 @@ for d in range(0,len(scisecb)):
         n2scb+=1
     if i>=90.1:
         n1scb+=1
-
 piscb=((n1scb*7+n2scb*6+n3scb*5+n4scb*4+n5scb*3+n6scb*2+n7scb*1)*100)/(tascb*7)
-
 #Social Science
-
 n1sscb=0
 n2sscb=0
 n3sscb=0
@@ -1583,18 +1094,10 @@ for d in range(0,len(sscisecb)):
         n2sscb+=1
     if i>=90.1:
         n1sscb+=1
-
 pisscb=((n1sscb*7+n2sscb*6+n3sscb*5+n4sscb*4+n5sscb*3+n6sscb*2+n7sscb*1)*100)/(tassb*7)
-
 pisecb=(pieb+pihb+pimb+pisb+piscb+pisscb)/6
-
-
-
 #Overall
 #English
-
-
-
 n1e=0
 n2e=0
 n3e=0
@@ -1618,12 +1121,8 @@ for d in range(0,n):
         n2e+=1
     if i>=90.1:
         n1e+=1
-
 pie=((n1e*7+n2e*6+n3e*5+n4e*4+n5e*3+n6e*2+n7e*1)*100)/(oae*7)
-
-
 #Hindi
-
 n1h=0
 n2h=0
 n3h=0
@@ -1648,10 +1147,7 @@ for d in range(0,n):
     if i>=90.1:
         n1h+=1
 pih=((n1h*7+n2h*6+n3h*5+n4h*4+n5h*3+n6h*2+n7h*1)*100)/(oah*7)
-
-
 #Sanskrit
-
 n1s=0
 n2s=0
 n3s=0
@@ -1676,9 +1172,7 @@ for d in range(0,n):
     if i>=90.1:
         n1s+=1
 pis=((n1s*7+n2s*6+n3s*5+n4s*4+n5s*3+n6s*2+n7s*1)*100)/(oas*7)
-
 #Math
-
 n1m=0
 n2m=0
 n3m=0
@@ -1702,12 +1196,8 @@ for d in range(0,n):
         n2m+=1
     if i>=90.1:
         n1m+=1
-
 pim=((n1m*7+n2m*6+n3m*5+n4m*4+n5m*3+n6m*2+n7m*1)*100)/(oam*7)
-
-
 #Science
-
 n1sc=0
 n2sc=0
 n3sc=0
@@ -1731,11 +1221,8 @@ for d in range(0,n):
         n2sc+=1
     if i>=90.1:
         n1sc+=1
-
 pisc=((n1sc*7+n2sc*6+n3sc*5+n4sc*4+n5sc*3+n6sc*2+n7sc*1)*100)/(oasc*7)
-
 #Social Science
-
 n1ssc=0
 n2ssc=0
 n3ssc=0
@@ -1759,461 +1246,294 @@ for d in range(0,n):
         n2ssc+=1
     if i>=90.1:
         n1ssc+=1
-
 pissc=((n1ssc*7+n2ssc*6+n3ssc*5+n4ssc*4+n5ssc*3+n6ssc*2+n7ssc*1)*100)/(oass*7)
-
-
 piclass=(pie+pih+pim+pis+pisc+pissc)/6
-    
-
 ####################################################
 ################### Output #########################
 ####################################################
-
-
-
-AS='OUTPUT.xlsx'
+AS=rd+'\\Resources'+'\SHEET.xlsx'
 file_output=openpyxl.load_workbook(AS)
 ot=file_output.worksheets[0]
-
 ###################################################################
 #################### For 1st section ##############################
 ###################################################################
-
 #Total enrolled each subject
-
-
 ot['D13']=len(engseca)
 ot['D14']=len(hndseca)
 ot['D15']=len(mthseca)
 ot['D16']=len(sciseca)
 ot['D17']=len(ssciseca)
 ot['D18']=len(sktseca)
-
 #Total appeared each subject
-
-
 ot['E13']=taea
 ot['E14']=taha
 ot['E15']=tama
 ot['E16']=tasca
 ot['E17']=tassa
 ot['E18']=tasa
-
-
 #Total qualified each subject
-
-
-
 ot['F13']=tqea
 ot['F14']=tqha
 ot['F15']=tqma
 ot['F16']=tqsca
 ot['F17']=tqssca
 ot['F18']=tqsa
-
-
 #TOTAL FAILED EACH SUBJECT
-
-
 ot['G13']=eea
 ot['G14']=hea
 ot['G15']=mea
 ot['G16']=sciea
 ot['G17']=ssciea
 ot['G18']=sea
-
-
 #TOTAL COMPARTMENT EACH SUBJECT
-
-
 ot['H13']=eea
 ot['H14']=hea
 ot['H15']=mea
 ot['H16']=sciea
 ot['H17']=ssciea
 ot['H18']=sea
-
-
 #PASS Percentage
-
-
 ot['I13']=pea
 ot['I14']=pha
 ot['I15']=pma
 ot['I16']=psca
 ot['I17']=pssca
 ot['I18']=psa
-
 #P.I
-
-
 ot['J13']=piea
 ot['J14']=piha
 ot['J15']=pima
 ot['J16']=pisca
 ot['J17']=pissca
 ot['J18']=pisa
-
 #D
-
-
 ot['K13']=eda
 ot['K14']=hda
 ot['K15']=mda
 ot['K16']=scida
 ot['K17']=sscida
 ot['K18']=sda
-
-
 #C
-
 ot['L13']=eca
 ot['L14']=hca
 ot['L15']=mca
 ot['L16']=scica
 ot['L17']=sscica
 ot['L18']=sca
-
-
 #B
-
 ot['M13']=eba
 ot['M14']=hba
 ot['M15']=mba
 ot['M16']=sciba
 ot['M17']=ssciba
 ot['M18']=sba
-
-
-
 #AA
-
 ot['N13']=eaaa
 ot['N14']=haaa
 ot['N15']=maaa
 ot['N16']=sciaaa
 ot['N17']=ssciaaa
 ot['N18']=saaa
-
-
 #OVERALL
 #ENROLLED and rest
-
 ot['D21']=tea
-
 ot['E21']=taa
-
 ot['F21']=tqa
-
 ot['G21']=tfa
-
 ot['H21']=0
-
 ot['I21']=int(opa)
-
 ot['J21']=piseca
-
 ot['k21']=da
-
 ot['L21']=ca
-
 ot['M21']=ba
-
 ot['N21']=aaa
-
-
-
-
 #for 2st section
-
 #total enrolled each subject
-
-
 ot['D29']=len(engsecb)
 ot['D30']=len(hndsecb)
 ot['D31']=len(mthsecb)
 ot['D32']=len(scisecb)
 ot['D33']=len(sscisecb)
 ot['D34']=len(sktsecb)
-
 #total appeared each subject
-
-
 ot['E29']=taeb
 ot['E30']=tahb
 ot['E31']=tamb
 ot['E32']=tascb
 ot['E33']=tassb
 ot['E34']=tasb
-
-
 #total qualified each subject
-
-
-
 ot['F29']=tqeb
 ot['F30']=tqhb
 ot['F31']=tqmb
 ot['F32']=tqscb
 ot['F33']=tqsscb
 ot['F34']=tqsb
-
-
 #TOTAL FAILED EACH SUBJECT
-
-
 ot['G29']=eeb
 ot['G30']=heb
 ot['G31']=meb
 ot['G32']=scieb
 ot['G33']=sscieb
 ot['G34']=seb
-
-
 #TOTAL COMPARTMENT EACH SUBJECT
-
-
 ot['H29']=eeb
 ot['H30']=heb
 ot['H31']=meb
 ot['H32']=scieb
 ot['H33']=sscieb
 ot['H34']=seb
-
-
 #PASS %
-
-
 ot['I29']=peb
 ot['I30']=phb
 ot['I31']=pmb
 ot['I32']=pscb
 ot['I33']=psscb
 ot['I34']=psb
-
 #P.I
-
-
 ot['J29']=pieb
 ot['J30']=pihb
 ot['J31']=pimb
 ot['J32']=piscb
 ot['J33']=pisscb
 ot['J34']=pisb
-
 #D
-
-
 ot['K29']=edb
 ot['K30']=hdb
 ot['K31']=mdb
 ot['K32']=scidb
 ot['K33']=sscidb
 ot['K34']=sdb
-
-
 #C
-
 ot['L29']=ecb
 ot['L30']=hcb
 ot['L31']=mcb
 ot['L32']=scicb
 ot['L33']=sscicb
 ot['L34']=scb
-
-
 #B
-
 ot['M29']=ebb
 ot['M30']=hbb
 ot['M31']=mbb
 ot['M32']=scibb
 ot['M33']=sscibb
 ot['M34']=sbb
-
-
 #AA
-
 ot['N29']=eaab
 ot['N30']=haab
 ot['N31']=maab
 ot['N32']=sciaab
 ot['N33']=ssciaab
 ot['N34']=saab
-
-
 #OVERALL
 #ENROLLED and rest
-
 ot['D37']=teb
-
 ot['E37']=tab
-
 ot['F37']=tqb
-
 ot['G37']=tfb
-
 ot['H37']=0
-
 ot['I37']=int(opb)
-
 ot['J37']=pisecb
-
 ot['k37']=db
-
 ot['L37']=cb
-
 ot['M37']=bb
-
 ot['N37']=aab
-
-
-
 #for overall class
-
 #total enrolled each subject
-
-
 ot['D45']=len(engseca)+len(engsecb)
 ot['D46']=len(hndseca)+len(hndsecb)
 ot['D47']=len(mthseca)+len(mthsecb)
 ot['D48']=len(sciseca)+len(scisecb)
 ot['D49']=len(ssciseca)+len(sscisecb)
 ot['D50']=len(sktseca)+len(sktsecb)
-
 #total appeared each subject
-
-
 ot['E45']=oae
 ot['E46']=oah
 ot['E47']=oam
 ot['E48']=oasc
 ot['E49']=oass
 ot['E50']=oas
-
-
 #total qualified each subject
-
-
-
 ot['F45']=tqe
 ot['F46']=tqh
 ot['F47']=tqm
 ot['F48']=tqsc
 ot['F49']=tqssc
 ot['F50']=tqs
-
-
 #TOTAL FAILED EACH SUBJECT
-
-
 ot['G45']=ee
 ot['G46']=he
 ot['G47']=me
 ot['G48']=scie
 ot['G49']=sscie
 ot['G50']=se
-
-
 #TOTAL COMPARTMENT EACH SUBJECT
-
-
 ot['H45']=ee
 ot['H46']=he
 ot['H47']=me
 ot['H48']=scie
 ot['H49']=sscie
 ot['H50']=se
-
-
 #PASS %
-
-
 ot['I45']=pe
 ot['I46']=ph
 ot['I47']=pm
 ot['I48']=psc
 ot['I49']=pssc
 ot['I50']=ps
-
 #P.I
-
-
 ot['J45']=pie
 ot['J46']=pih
 ot['J47']=pim
 ot['J48']=pisc
 ot['J49']=pissc
 ot['J50']=pis
-
 #D
-
-
 ot['K45']=ed
 ot['K46']=hd
 ot['K47']=md
 ot['K48']=scid
 ot['K49']=sscid
 ot['K50']=sd
-
-
 #C
-
 ot['L45']=ec
 ot['L46']=hc
 ot['L47']=mc
 ot['L48']=scic
 ot['L49']=sscic
 ot['L50']=sc
-
-
 #B
-
 ot['M45']=eb
 ot['M46']=hb
 ot['M47']=mb
 ot['M48']=scib
 ot['M49']=sscib
 ot['M50']=sb
-
-
-
 #AA
-
 ot['N45']=eaa
 ot['N46']=haa
 ot['N47']=maa
 ot['N48']=sciaa
 ot['N49']=ssciaa
 ot['N50']=saa
-
-
 #OVERALL
 #ENROLLED and rest
-
 ot['D53']=te
-
 ot['E53']=ta
-
 ot['F53']=tq
-
 ot['G53']=tf
-
 ot['H53']=0
-
 ot['I53']=int(op)
-
 ot['J53']=piclass
-
 ot['k53']=d
-
 ot['L53']=c
-
 ot['M53']=b
-
 ot['N53']=aa
 
 
-file_output.save(name+'.xlsx')
+file_output.save(rd+'\\'+name+'.xlsx')
+
+print("The program has been executed successfully")
+
+a=input()
 
