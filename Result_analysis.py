@@ -18,7 +18,7 @@ tk.Label(ra,
 4. Write the name of the output file without any extention(by default .xlsx format).
 ''',fg='CYAN', bg='black', font=('comicsans', 12)).grid(row=3,column=1)
 img = tk.PhotoImage(file = r".\kvs-logo.png") 
-img1 = img.subsample(12,12)
+img1 = img.subsample(2,2)
 tk.Label(ra, image = img1).grid(row = 0, column = 2, 
        columnspan = 2, rowspan = 2, padx = 5, pady = 5)
 e1 = tk.Entry(ra,width=55)
