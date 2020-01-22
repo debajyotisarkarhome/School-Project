@@ -8,4 +8,4 @@ ready result analysis spreadsheet in the directory.
 .
 .
 .
-This is a project of Kendriya Vidyalaya CHittaranjan by Team of Debajyoti Sarkar(Me),Arka Sarkar and Karan Kumar Shaw
+This is a project of Kendriya Vidyalaya CHittaranjan by Team of Debajyoti Sarkar(Me),Arka Sarkar and Karan Kumar Shaw.
