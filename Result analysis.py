@@ -7,32 +7,32 @@ import os
 ra = tk.Tk()
 ra.title('Result Analysis')
 
-tk.Label(ra, 
-         text="Address").grid(row=0)
-         
-tk.Label(ra, 
-         text="Number of students").grid(row=1)
-         
-tk.Label(ra, 
-         text="Name of output file").grid(row=2)
-  
+tk.Label(ra,text="Address",font=('arial',15)).grid(row=0)
+tk.Label(ra,text="Number of students",font=('arial',15)).grid(row=1)
+tk.Label(ra,text="Name of output file",font=('arial',15)).grid(row=2)
+tk.Label(ra,text='''Instructions:
+Use only the .xlsx file provided with the software.(INPUT.xlsx)
+2. Fill the absolute address of the input file provided with the software or if the file
+       ispresent in the directory of the program mention the file name with the extension.
+3. Mention the total number of student's data prived as it is mandatory.
+4. Write the name of the output file without any extention(by default .xlsx format)''',fg='blue',font=('arial')).grid(row=3)
 rd = os.path.dirname(os.path.realpath(__file__))
+
 e1 = tk.Entry(ra,width=75)
-
 e2 = tk.Entry(ra,width=75)
-
 e3=tk.Entry(ra,width=75)
-
 e1.grid(row=0, column=1)
-
 e2.grid(row=1, column=1)
-
 e3.grid(row=2,column=1)
 
-tk.Button(ra, text='Get Results',command=ra.quit).grid(row=3,column=1)
+img = tk.PhotoImage(file = r".\kvs-logo.png") 
+img1 = img.subsample(2,2)
+tk.Label(ra, image = img1).grid(row = 0, column = 2,columnspan = 2, rowspan = 2, padx = 2, pady = 2)
+
+tk.Button(ra, text='Get Results',command=ra.quit).grid(row=4,column=1)
 def close(): 
     ra.destroy()
-tk.Button(ra, text = "Quit", command = close).grid(row=3,column=0)
+tk.Button(ra, text = "Quit", command = close).grid(row=4,column=0)
 tk.mainloop()
 s=rd+'\\Resources'+'\\'+e1.get()
 n=int(e2.get())
@@ -1535,5 +1535,5 @@ file_output.save(rd+'\\'+name+'.xlsx')
 
 print("The program has been executed successfully")
 
-a=input()
+
 
